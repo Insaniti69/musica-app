@@ -1,7 +1,7 @@
 # Musica App
 App que tiene las siguientes opciontes:
 - listado de canciones
-	+readSongs
+	> readSongs
 - busqueda/update/delete de cancion por titulo
 	> readSong --title="ej"
 	> updateSong --title="ej"

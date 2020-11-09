@@ -19,7 +19,7 @@ const addSong = (song) => {
 
 const readSong = (title) => {
 	try{
-		const songs = JSON.parse(fs.readFileSync('canciones.json').toString())
+		const songs = readSongs()
 		index = songs.findIndex(elem => elem['title'].toLowerCase() === title.toLowerCase())
 		if(index >= 0) console.log(songs[index])
 		else console.log('Song not found')

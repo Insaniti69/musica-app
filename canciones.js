@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 const addSong = (song) => {
-	let songs = readSongs()
+	const songs = readSongs()
 	index = songs.findIndex(elem => elem['title'].toLowerCase() === song['title'].toLowerCase() && elem['artist'].toLowerCase() === song['artist'].toLowerCase() && elem['year'] === song['year'])
 	if(index >= 0) console.log('The song already exists')
 	else{

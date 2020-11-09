@@ -1,15 +1,19 @@
 const fs = require('fs')
 
+const writeToFile = (songs) => {
+	fs.writeFile('canciones.json',JSON.stringify(songs),(error,songs)=>{
+		if(error) console.log(error)
+		else console.log('songs updated')
+	})
+}
+
 const addSong = (song) => {
 	const songs = readSongs()
 	index = songs.findIndex(elem => elem['title'].toLowerCase() === song['title'].toLowerCase() && elem['artist'].toLowerCase() === song['artist'].toLowerCase() && elem['year'] === song['year'])
 	if(index >= 0) console.log('The song already exists')
 	else{
 		songs.push(song)
-		fs.writeFile('canciones.json',JSON.stringify(songs),(error,songs)=>{
-			if(error) console.log(error)
-			else console.log('song added')
-		})
+		writeToFile(songs)
 	}
 }
 
@@ -29,10 +33,7 @@ const deleteSong = (title) => {
 	index = songs.findIndex(elem => elem['title'].toLowerCase() === title.toLowerCase())
 	if(index >= 0){
 		songs.splice(index,1)
-		fs.writeFile('canciones.json',JSON.stringify(songs),(error,songs)=>{
-			if(error) console.log(error)
-			else console.log('Song deleted')
-		})
+		writeToFile(songs)
 	}else{
 		console.log('Song not found')
 	}
@@ -43,10 +44,7 @@ const updateSong = (title,newTitle) => {
 	index = songs.findIndex(elem => elem['title'].toLowerCase() === title.toLowerCase())
 	if(index >= 0){
 		songs[index]['title'] = newTitle
-		fs.writeFile('canciones.json',JSON.stringify(songs),(error,songs)=>{
-			if(error) console.log(error)
-			else console.log('Song updated')
-		})
+		writeToFile(songs)
 	}else{
 		console.log('Song not found')
 	}

@@ -18,7 +18,7 @@ yargs.command({
 		year: {
 			describe: 'year',
 			demandOption: true,
-			type: 'int'
+			type: 'number'
 		}
 	},
 	handler(argv) {
